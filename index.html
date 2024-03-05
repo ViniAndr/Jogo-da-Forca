@@ -8,20 +8,28 @@
   </head>
   <body>
     <div class="container">
-      <div class="cabecario">
-        <h1>Jogo da Forca</h1>
-        <div class="placar">
-          <div class="percas">0</div>
-          <div class="ganhos">0</div>
-        </div>
+      <!-- Titulo da página -->
+      <h1>Jogo da Forca</h1>
+      <!-- Divisão da categoria e palavra -->
+      <div class="divPalavra">
+        <h2 id="categoria"></h2>
+        <h2 id="formarPalavra"></h2>
       </div>
-      <h2 id="categoria"></h2>
-      <h2 id="formarPalavra"></h2>
-      <section class="grupoLetras">
+      <!-- área do teclado virtual -->
+      <section class="tecladoVirtual">
         <div class="linha"></div>
         <div class="linha"></div>
         <div class="linha"></div>
       </section>
+      <!-- DIV do placar -->
+      <div class="divPlacar">
+        <h2>Palavras</h2>
+        <div class="ganhos">Acertos: 0</div>
+        <div class="percas">Erros: 0</div>
+        <hr />
+        <!-- seção dos historicos das palavras -->
+        <section class="historicoPalavras"></section>
+      </div>
     </div>
     <script type="module" src="src/main.js"></script>
   </body>

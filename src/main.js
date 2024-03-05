@@ -9,6 +9,7 @@ const categoriaFront = document.querySelector("#categoria");
 const btnNext = document.querySelector(".btn-next");
 const placarRed = document.querySelector(".percas");
 const placarGreen = document.querySelector(".ganhos");
+const historicoPalavras = document.querySelector(".historicoPalavras");
 
 // Variáveis de Estado do Jogo
 let palavra, categoria, formarPalavra;
@@ -107,14 +108,16 @@ function fimDeJogo() {
     endGame = true;
     atualizarMensagemFinal("Você Ganhou", "#74c483");
     placarGanho++;
-    placarGreen.innerHTML = placarGanho;
+    placarGreen.innerHTML = `Acertos: ${placarGanho}`;
+    montarHistorico("green");
   }
   // Verifica se o usuário perdeu
   else if (qtdErros === 7) {
     endGame = true;
     atualizarMensagemFinal(`Você Perdeu, a palavra era ${palavra}`, "#e57780");
     placarPercas++;
-    placarRed.innerHTML = placarPercas;
+    placarRed.innerHTML = `Erros: ${placarPercas}`;
+    montarHistorico("red");
   }
 
   // Ativa o botão para iniciar um novo jogo, se o jogo terminou
@@ -143,4 +146,14 @@ function resetarJogo() {
   todasLetras.forEach((elemento) => {
     elemento.classList.remove("letra-acerto", "letra-errado");
   });
+}
+
+// Função responsavel por colocar as palavras no "historico"
+function montarHistorico(cor) {
+  const palavraHistorico = document.createElement("p");
+  palavraHistorico.innerHTML = palavra;
+  cor == "green"
+    ? (palavraHistorico.style.color = "#74c483")
+    : (palavraHistorico.style.color = "#e57780");
+  historicoPalavras.appendChild(palavraHistorico);
 }
